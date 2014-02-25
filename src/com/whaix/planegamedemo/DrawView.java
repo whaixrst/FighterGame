@@ -1,6 +1,9 @@
 package com.whaix.planegamedemo;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,11 +12,15 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.os.Message;
+import android.os.Handler;
 import android.view.View;
 
 public class DrawView extends View {
 	ArrayList<Bullet> bt=new ArrayList<Bullet>();
 	ArrayList<Plane> pt=new ArrayList<Plane>();	
+	ArrayList<Bomb> bombs = new ArrayList<Bomb>();
+	ArrayList<Bomb> bigBombs = new ArrayList<Bomb>();
 	Context dcontext;
 	//线程
 	Plane plane;
@@ -25,12 +32,13 @@ public class DrawView extends View {
 	FightForEnemy fightForEnemy;
 	ProductEnemyPlane productEnemyPlane;
 	EnemyPlaneMove enemyPlaneMove;
+	BombMove bombMove;
 	
-//	final int BACK_HEIGHT=1700;		//记录背景位图的实际高度 
-//	private Bitmap back;
-//	final int WIDTH=480;
-//	final int HEIGHT=854;
-//	private int startY=BACK_HEIGHT-HEIGHT;
+	final int BACK_HEIGHT=1700;		//记录背景位图的实际高度 
+	private Bitmap back;
+	final int WIDTH=480;
+	final int HEIGHT=854;
+	private int startY=BACK_HEIGHT-HEIGHT;
 	
 	float PlaneCurrentX=0;		//当前飞机坐标，好像没用到
 	float PlaneCurrentY=0;
@@ -38,6 +46,8 @@ public class DrawView extends View {
 	float disyv=0;
 	float v = 1;
 	static  boolean fail =false;		//我机是否被击毁
+
+	
 	
 	Bitmap bitMyPlane = BitmapFactory.decodeResource(getResources(),
 			R.drawable.plane);
@@ -72,6 +82,8 @@ public class DrawView extends View {
 		this.dcontext=context;
 		PlaneCurrentX=plane.getPlaneX();
 		PlaneCurrentY=plane.getPlaneY();
+		//获取长背景图
+	
 		init();
 	}
 	
@@ -79,9 +91,9 @@ public class DrawView extends View {
 	 * 初始化，功能待完善
 	 */
 	private void init(){	
-	/*	back=BitmapFactory.decodeResource(dcontext.getResources(), R.drawable.back_img);
+		back=BitmapFactory.decodeResource(dcontext.getResources(), R.drawable.back_img);
 		final Handler handler=new Handler(){
-			public  void handlerMessage(Message msg){
+			public void handleMessage(Message msg){
 				if(msg.what==0x123){
 					//重新开始移动
 					if(startY<=0){
@@ -90,7 +102,7 @@ public class DrawView extends View {
 						startY-=3;
 					}
 				}
-				invalidate();
+				postInvalidate();
 			}
 		};
 		new Timer().schedule(new TimerTask(){
@@ -98,14 +110,15 @@ public class DrawView extends View {
 				handler.sendEmptyMessage(0x123);
 			}
 		},0,100);
-		*/		
+				
 		
 		threadMovePlane=new MovePlanes();
 		productBullet=new ProductBullet();
 		bulletMove=new BulletMove(this,bt);
-		fightForEnemy=new FightForEnemy(dcontext,pt,bt,plane,bullet,this);
+		fightForEnemy=new FightForEnemy(dcontext,pt,bt,bombs,plane,bullet,this);
 		productEnemyPlane=new ProductEnemyPlane(this,pt,bt);
 		enemyPlaneMove=new EnemyPlaneMove(this,pt);
+		bombMove=new BombMove(bombs,this);
 		
 		threadMovePlane.start();
 		productBullet.start();
@@ -113,6 +126,7 @@ public class DrawView extends View {
 		fightForEnemy.start();
 		productEnemyPlane.start();
 		enemyPlaneMove.start();
+		bombMove.start();
 	}
 	
 	/*
@@ -136,6 +150,8 @@ public class DrawView extends View {
 	public void onDraw(Canvas canvas){
 		super.onDraw(canvas);	
 				
+		Bitmap bitmap123=Bitmap.createBitmap(back,0,startY,WIDTH,HEIGHT);
+		canvas.drawBitmap(bitmap123, 0, 0,null);
 		Paint paint=new Paint();
 		
 		/**画背景图**/
@@ -227,7 +243,31 @@ public class DrawView extends View {
 				canvas.drawBitmap(bitPlaneBoss, null, rectf3, paint);
 			}
 		}
+		
+		/**绘制爆炸**/
+		
+		Bitmap explosion = BitmapFactory.decodeResource(getResources(),
+				R.drawable.explosion);
+		for (int i = 0; i < bombs.size(); i++) {
+			RectF rectf4 = new RectF(bombs.get(i).getX()
+					- bombs.get(i).getBombDis(), bombs.get(i).getY()
+					- bombs.get(i).getBombDis(), bombs.get(i).getX()
+					+ bombs.get(i).getBombDis(), bombs.get(i).getY()
+					+ bombs.get(i).getBombDis());
+			canvas.drawBitmap(explosion, null, rectf4, paint);
+		}
+		for (int i = 0; i < bigBombs.size(); i++) {
+			RectF rectf5 = new RectF(bigBombs.get(i).getX()
+					- bigBombs.get(i).getBombDis(), bigBombs.get(i).getY()
+					- bigBombs.get(i).getBombDis(), bigBombs.get(i).getX()
+					+ bigBombs.get(i).getBombDis(), bigBombs.get(i).getY()
+					+ bigBombs.get(i).getBombDis());
+			canvas.drawBitmap(explosion, null, rectf5, paint);
+		}	
+		
+	
 	}
+
 	public class ProductBullet extends Thread {
 		public void run() {
 			super.run();		

@@ -11,6 +11,7 @@ import android.media.MediaPlayer;
 public class FightForEnemy extends Thread {
 	ArrayList<Bullet> bt;
 	ArrayList<Plane> pt;
+	ArrayList<Bomb> bombt;
 	Plane plane;
 	Bullet bullet;
 	DrawView drawView;
@@ -19,14 +20,14 @@ public class FightForEnemy extends Thread {
 
 	private MediaPlayer boomPlayer01,boomPlayer02,boomPlayer03;
 	
-	public FightForEnemy(Context fContext,ArrayList<Plane> pt,ArrayList<Bullet> bt,Plane plane,Bullet bullet,DrawView drawView){
+	public FightForEnemy(Context fContext,ArrayList<Plane> pt,ArrayList<Bullet> bt,ArrayList<Bomb> bombt,Plane plane,Bullet bullet,DrawView drawView){
 		this.bt=bt;
 		this.pt=pt;
 		this.plane=plane;
 		this.bullet=bullet;
 		this.drawView=drawView;
 		this.fContext=fContext;
-
+		this.bombt=bombt;
 		init();
 	}
 	
@@ -59,10 +60,10 @@ public class FightForEnemy extends Thread {
 										//	anim.stop();
 										//	boomPlayer.stop();
 										
-											boomPlayer01.start();
+										//ÔÝÊ±ÆÁ±ÎÉùÒô			boomPlayer01.start();
 											
-									//	Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
-									//		bombt.add(b);
+											Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
+											bombt.add(b);
 											pt.remove(i);
 											bt.remove(j);
 											//com.example.planefight.Parameter.score+=1;
@@ -84,12 +85,12 @@ public class FightForEnemy extends Thread {
 											&& pt.get(i).getPlaneY() + 30 > bt.get(j).getBulletY()
 											&& pt.get(i).getPlaneY() - 30 < bt.get(j).getBulletY()
 											&& bt.get(j).getBulletType() == 1) {
-									//	Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
-									//		bombt.add(b);
+										Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
+											bombt.add(b);
 										//	anim.stop();
 										//	boomPlayer.stop();
 										
-											boomPlayer02.start();
+											//ÔÝÊ±ÆÁ±ÎÉùÒô			boomPlayer02.start();
 											pt.remove(i);
 											bt.remove(j);
 									//		com.example.planefight.Parameter.score+=1;
@@ -114,9 +115,9 @@ public class FightForEnemy extends Thread {
 										//	anim.stop();
 										//	boomPlayer.stop();
 											
-											boomPlayer03.start();
-									//	Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
-									//		bombt.add(b);
+									//ÔÝÊ±ÆÁ±ÎÉùÒô		boomPlayer03.start();  
+											Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
+											bombt.add(b);
 											pt.remove(i);
 											bt.remove(j);
 									//		com.example.planefight.Parameter.score+=1;

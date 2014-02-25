@@ -22,8 +22,8 @@ public class ProductEnemyPlane extends Thread {
 				Plane plane;
 				Bullet bullet;
 				if(rand<=60){
-					plane=new Plane(x,0,2,2);
-					bullet=new Bullet(x,y,2,2,50);
+					plane=new Plane(x,0,2,2);		//plane(x坐标,y坐标,“敌我机”，“飞机图片”)
+					bullet=new Bullet(x,y,2,2,50);		
 				}
 				else if(rand>60&&rand<80){
 					plane=new Plane(x,0,2,3);
