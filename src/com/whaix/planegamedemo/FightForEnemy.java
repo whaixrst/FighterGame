@@ -55,18 +55,13 @@ public class FightForEnemy extends Thread {
 											&& pt.get(i).getPlaneX() - 25 < bt.get(j).getBulletX()
 											&& pt.get(i).getPlaneY() + 25 > bt.get(j).getBulletY()
 											&& pt.get(i).getPlaneY() - 25 < bt.get(j).getBulletY()
-											&& bt.get(j).getBulletType() == 1) {
-										
-										//	anim.stop();
-										//	boomPlayer.stop();
-										
-										//ÔÝÊ±ÆÁ±ÎÉùÒô			boomPlayer01.start();
-											
-											Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
-											bombt.add(b);
-											pt.remove(i);
-											bt.remove(j);
-											//com.example.planefight.Parameter.score+=1;
+											&& bt.get(j).getBulletType() == 1) {																													
+											    boomPlayer01.start();											
+												Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
+												bombt.add(b);
+												pt.remove(i);
+												bt.remove(j);
+												parameter.Score+=1;
 											//if(com.example.planefight.Parameter.voice){	¿ªÆôÉùÒô
 											//	com.example.planefight.Parameter.mediaplayer.start();
 											//}
@@ -85,15 +80,12 @@ public class FightForEnemy extends Thread {
 											&& pt.get(i).getPlaneY() + 30 > bt.get(j).getBulletY()
 											&& pt.get(i).getPlaneY() - 30 < bt.get(j).getBulletY()
 											&& bt.get(j).getBulletType() == 1) {
-										Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
-											bombt.add(b);
-										//	anim.stop();
-										//	boomPlayer.stop();
-										
-											//ÔÝÊ±ÆÁ±ÎÉùÒô			boomPlayer02.start();
-											pt.remove(i);
-											bt.remove(j);
-									//		com.example.planefight.Parameter.score+=1;
+												Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
+												bombt.add(b);
+												boomPlayer02.start();
+												pt.remove(i);
+												bt.remove(j);
+												parameter.Score+=2;
 									//		if(com.example.planefight.Parameter.voice){
 									//			com.example.planefight.Parameter.mediaplayer.start();
 									//		}
@@ -112,15 +104,12 @@ public class FightForEnemy extends Thread {
 											&& pt.get(i).getPlaneY() + 40 > bt.get(j).getBulletY()
 											&& pt.get(i).getPlaneY() - 40 < bt.get(j).getBulletY()
 											&& bt.get(j).getBulletType() == 1) {
-										//	anim.stop();
-										//	boomPlayer.stop();
-											
-									//ÔÝÊ±ÆÁ±ÎÉùÒô		boomPlayer03.start();  
-											Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
-											bombt.add(b);
-											pt.remove(i);
-											bt.remove(j);
-									//		com.example.planefight.Parameter.score+=1;
+												boomPlayer03.start();  
+												Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
+												bombt.add(b);
+												pt.remove(i);
+												bt.remove(j);
+												parameter.Score+=5;
 									//		if(com.example.planefight.Parameter.voice){
 									//			com.example.planefight.Parameter.mediaplayer.start();
 									//		}

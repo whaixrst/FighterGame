@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,9 +11,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.os.Message;
 import android.os.Handler;
+import android.os.Message;
 import android.view.View;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.AbsoluteLayout;
+import android.widget.TextView;
 
 public class DrawView extends View {
 	ArrayList<Bullet> bt=new ArrayList<Bullet>();
@@ -47,7 +49,8 @@ public class DrawView extends View {
 	float v = 1;
 	static  boolean fail =false;		//我机是否被击毁
 
-	
+	float pWidth=0;
+	float pHeight=0;
 	
 	Bitmap bitMyPlane = BitmapFactory.decodeResource(getResources(),
 			R.drawable.plane);
@@ -83,7 +86,7 @@ public class DrawView extends View {
 		PlaneCurrentX=plane.getPlaneX();
 		PlaneCurrentY=plane.getPlaneY();
 		//获取长背景图
-	
+		
 		init();
 	}
 	
@@ -91,6 +94,7 @@ public class DrawView extends View {
 	 * 初始化，功能待完善
 	 */
 	private void init(){	
+		
 		back=BitmapFactory.decodeResource(dcontext.getResources(), R.drawable.back_img);
 		final Handler handler=new Handler(){
 			public void handleMessage(Message msg){
@@ -149,14 +153,39 @@ public class DrawView extends View {
 	 */
 	public void onDraw(Canvas canvas){
 		super.onDraw(canvas);	
-				
+		/**画背景图**/			
 		Bitmap bitmap123=Bitmap.createBitmap(back,0,startY,WIDTH,HEIGHT);
 		canvas.drawBitmap(bitmap123, 0, 0,null);
 		Paint paint=new Paint();
+		/**计算分数**/
+	/*	TextView tvName=new TextView(dcontext);
+		TextView tvScore=new TextView(dcontext);
+		pWidth=parameter.Width;
+		pHeight=parameter.Height;
 		
-		/**画背景图**/
+		Float w=new Float(pWidth);
+		Float h=new Float(pHeight);
+		int wid=w.intValue();		
+		int hei=h.intValue();
+		tvName.setTextColor(Color.WHITE);
+		tvScore.setTextColor(Color.RED);
+		//tvName.setLeft(20);
+		//tvName.setTop(30);
+		AbsoluteLayout.LayoutParams lp;
+
+		lp = new AbsoluteLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 0, 0);
+		lp.x=20;
+		lp.y=50;
+		lp.height=30;
+		lp.width=50;
+		tvName.setLayoutParams(lp);
+		tvName.setPadding(20, 30,wid-50, hei-50);
+		tvScore.setPadding(60, 30,wid-100, hei-50);
 		
-//		canvas.drawBitmap(bitBack, 0,0, paint);
+		tvName.setText("分数:");
+		tvScore.setText(Integer.toString(parameter.Score));
+		tvName.setVisibility(VISIBLE);
+	*/	
 		/**飞机未被击毁时正常绘制飞机图片**/
 		if(fail==false){	
 			RectF rectf = new RectF(plane.getPlaneX()-50, 

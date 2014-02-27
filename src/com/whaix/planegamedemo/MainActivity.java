@@ -6,27 +6,42 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	Plane plane=null;
 	DrawView drawView=null;	
 	DisplayMetrics metric;
-	private float width=0;
-	private float height=0;
-	
+	private int width=0;
+	private int height=0;
+	TextView tvName,tvScore;
+	FrameLayout root;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);		
+		super.onCreate(savedInstanceState);			
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+//		setContentView(R.layout.activity_main);
+		root=(FrameLayout)findViewById(R.id.root);
+		
 		
 		metric=new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metric);
-		width=metric.widthPixels;		//ÆÁÄ»¸ß¿í£¨ÏñËØ£©
-		height=metric.heightPixels;
+		parameter.Width=metric.widthPixels;		//ÆÁÄ»¸ß¿í£¨ÏñËØ£©
+		parameter.Height=metric.heightPixels;
+		Float w =new Float(parameter.Width);
+		Float h=new Float(parameter.Height);
+		width=w.intValue();
+		height=h.intValue();
 		
 		plane = new Plane(parameter.screenWidth / 2 - 25, parameter.screenHeight - 85, 1,1);
 		drawView = new DrawView(MainActivity.this, plane);
 		
+		drawView.setMinimumHeight(height);
+		drawView.setMinimumWidth(width);
+		root.addView(drawView);
+	//	tvScore=(TextView)findViewById(R.id.showScore);
 		/**Ëæ»ú±³¾°**/
 	/*	int rand = (int) (Math.random() * 10);
 		if(rand<6){		
@@ -37,6 +52,7 @@ public class MainActivity extends Activity {
 		}
 */
 		setContentView(drawView);
+		
 	}
 	
 	@Override
