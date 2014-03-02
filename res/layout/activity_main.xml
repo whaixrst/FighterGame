@@ -4,14 +4,14 @@
     android:layout_height="match_parent"
   	android:id="@+id/root"
     >
-   
+  
 	<TextView 
 	    android:id="@+id/showName"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/showName"
 	    android:layout_gravity="top|left"
-	    android:textColor="#f0f"
+	    android:textColor="#00f"
 	    />
 	<TextView 
 	    android:id="@+id/showScore"

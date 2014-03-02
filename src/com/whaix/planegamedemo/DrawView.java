@@ -13,6 +13,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.AbsoluteLayout;
@@ -35,7 +36,7 @@ public class DrawView extends View {
 	ProductEnemyPlane productEnemyPlane;
 	EnemyPlaneMove enemyPlaneMove;
 	BombMove bombMove;
-	
+	TextView tvScore;
 	final int BACK_HEIGHT=1700;		//记录背景位图的实际高度 
 	private Bitmap back;
 	final int WIDTH=480;
@@ -79,10 +80,12 @@ public class DrawView extends View {
 	/*
 	 * 构造方法
 	 */
-	public DrawView(Context context,Plane plane){
+	public DrawView(Context context,TextView tvScore){
 		super(context);		
-		this.plane=plane;
+	//	this.plane=plane;
 		this.dcontext=context;
+		this.tvScore=tvScore;
+		plane = new Plane(parameter.screenWidth / 2 - 25, parameter.screenHeight - 85, 1,1);
 		PlaneCurrentX=plane.getPlaneX();
 		PlaneCurrentY=plane.getPlaneY();
 		//获取长背景图
@@ -119,7 +122,7 @@ public class DrawView extends View {
 		threadMovePlane=new MovePlanes();
 		productBullet=new ProductBullet();
 		bulletMove=new BulletMove(this,bt);
-		fightForEnemy=new FightForEnemy(dcontext,pt,bt,bombs,plane,bullet,this);
+		fightForEnemy=new FightForEnemy(dcontext,pt,bt,bombs,plane,bullet,this,tvScore);
 		productEnemyPlane=new ProductEnemyPlane(this,pt,bt);
 		enemyPlaneMove=new EnemyPlaneMove(this,pt);
 		bombMove=new BombMove(bombs,this);
@@ -274,7 +277,7 @@ public class DrawView extends View {
 		}
 		
 		/**绘制爆炸**/
-		
+	
 		Bitmap explosion = BitmapFactory.decodeResource(getResources(),
 				R.drawable.explosion);
 		for (int i = 0; i < bombs.size(); i++) {
@@ -319,7 +322,7 @@ public class DrawView extends View {
 			super.run();
 			while (true) {
 				try {
-					Thread.sleep(3);		//移动飞机,平滑移动.sleep来控制速度
+					Thread.sleep(3);		//移动我机,平滑移动.sleep来控制速度
 					if ((plane.getPlaneX() >= PlaneCurrentX)) {
 						plane.setPlaneX(plane.getPlaneX() - disxv);
 					} else if ((plane.getPlaneX() < PlaneCurrentX)) {
@@ -337,6 +340,6 @@ public class DrawView extends View {
 			}
 		}
 	}
-
+	
 }
 

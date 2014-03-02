@@ -10,6 +10,75 @@ package com.whaix.planegamedemo;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        /** 浅玫瑰色 
+         */
+        public static final int bisque=0x7f05000d;
+        /** 番木色 
+         */
+        public static final int blanchedalmond=0x7f05000b;
+        /** 柠檬绸色 
+         */
+        public static final int cornsilk=0x7f050007;
+        /** 亮肉色 
+         */
+        public static final int darkorange=0x7f050016;
+        /** 雪白色 
+         */
+        public static final int floralwhite=0x7f050005;
+        /** 桃色 
+         */
+        public static final int gold=0x7f050011;
+        /** 白色 
+         */
+        public static final int ivory=0x7f050001;
+        /** 海贝色 
+         */
+        public static final int lavenderblush=0x7f050009;
+        /** 花白色 
+         */
+        public static final int lemonchiffon=0x7f050006;
+        /** 粉红色 
+         */
+        public static final int lightpink=0x7f050013;
+        /** 橙色 
+         */
+        public static final int lightsalmon=0x7f050015;
+        /** 象牙色 
+         */
+        public static final int lightyellow=0x7f050002;
+        /** 白杏色 
+         */
+        public static final int mistyrose=0x7f05000c;
+        /** 桔黄色 
+         */
+        public static final int moccasin=0x7f05000e;
+        /** 鹿皮色 
+         */
+        public static final int navajowhite=0x7f05000f;
+        /** 亮粉红色 
+         */
+        public static final int orange=0x7f050014;
+        /** 淡紫红 
+         */
+        public static final int papayawhip=0x7f05000a;
+        /** 纳瓦白 
+         */
+        public static final int peachpuff=0x7f050010;
+        /** 金色 
+         */
+        public static final int pink=0x7f050012;
+        /** 米绸色 
+         */
+        public static final int seaShell=0x7f050008;
+        /** 黄色 
+         */
+        public static final int snow=0x7f050004;
+        public static final int white=0x7f050000;
+        /** 亮黄色 
+         */
+        public static final int yellow=0x7f050003;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -17,8 +86,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static final int back=0x7f020000;
@@ -43,16 +112,16 @@ public final class R {
         public static final int rank_backgroud=0x7f020013;
     }
     public static final class id {
-        public static final int action_settings=0x7f090003;
-        public static final int root=0x7f090000;
-        public static final int showName=0x7f090001;
-        public static final int showScore=0x7f090002;
+        public static final int action_settings=0x7f0a0003;
+        public static final int root=0x7f0a0000;
+        public static final int showName=0x7f0a0001;
+        public static final int showScore=0x7f0a0002;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
+        public static final int main=0x7f090000;
     }
     public static final class raw {
         public static final int bomb1=0x7f040000;
@@ -61,10 +130,10 @@ public final class R {
         public static final int explosion03=0x7f040003;
     }
     public static final class string {
-        public static final int action_settings=0x7f060001;
-        public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f060002;
-        public static final int showName=0x7f060003;
+        public static final int action_settings=0x7f070001;
+        public static final int app_name=0x7f070000;
+        public static final int hello_world=0x7f070002;
+        public static final int showName=0x7f070003;
     }
     public static final class style {
         /** 
@@ -88,10 +157,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
 }

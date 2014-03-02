@@ -19,7 +19,7 @@ public class PlaneMove extends Thread {
 	}
 	
 	public void drawPlane(float x,float y){
-		Paint paint=new Paint();
+		Paint paint=new Paint();		//这里只是把飞机画出来了
 		Bitmap bit = BitmapFactory.decodeResource(context.getResources(),
 				R.drawable.plane);
 		RectF rectf = new RectF(x, y, x + 50, y + 50);

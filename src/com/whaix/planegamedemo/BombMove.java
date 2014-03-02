@@ -19,9 +19,10 @@ public class BombMove extends Thread {
 				for (int i = 0; i < bombt.size(); i++) {
 					if (null != bombt.get(i)) {
 						bombt.get(i).setBombDis(bombt.get(i).getBombDis() + 1);
-						if (bombt.get(i).getBombDis() > 40) {
+						if (bombt.get(i).getBombDis() > 30) {
 							bombt.remove(i);
 						}
+						bombt.get(i).setY(bombt.get(i).getY()+5);
 					}
 					drawView.postInvalidate();
 				}

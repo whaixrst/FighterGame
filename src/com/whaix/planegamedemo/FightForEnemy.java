@@ -4,8 +4,8 @@ package com.whaix.planegamedemo;
 import java.util.ArrayList;
 
 import android.content.Context;
-
 import android.media.MediaPlayer;
+import android.widget.TextView;
 
 
 public class FightForEnemy extends Thread {
@@ -16,11 +16,11 @@ public class FightForEnemy extends Thread {
 	Bullet bullet;
 	DrawView drawView;
 	Context fContext;
-
+	TextView tvScore;
 
 	private MediaPlayer boomPlayer01,boomPlayer02,boomPlayer03;
 	
-	public FightForEnemy(Context fContext,ArrayList<Plane> pt,ArrayList<Bullet> bt,ArrayList<Bomb> bombt,Plane plane,Bullet bullet,DrawView drawView){
+	public FightForEnemy(Context fContext,ArrayList<Plane> pt,ArrayList<Bullet> bt,ArrayList<Bomb> bombt,Plane plane,Bullet bullet,DrawView drawView,TextView tvScore){
 		this.bt=bt;
 		this.pt=pt;
 		this.plane=plane;
@@ -28,6 +28,7 @@ public class FightForEnemy extends Thread {
 		this.drawView=drawView;
 		this.fContext=fContext;
 		this.bombt=bombt;
+		this.tvScore=tvScore;
 		init();
 	}
 	
@@ -65,8 +66,10 @@ public class FightForEnemy extends Thread {
 											//if(com.example.planefight.Parameter.voice){	¿ªÆôÉùÒô
 											//	com.example.planefight.Parameter.mediaplayer.start();
 											//}
+												String totelScore=Integer.toString(parameter.Score);
+												tvScore.setText(totelScore);
 										}
-									drawView.postInvalidate();
+									//drawView.postInvalidate();
 									}
 								}
 							}
@@ -89,8 +92,10 @@ public class FightForEnemy extends Thread {
 									//		if(com.example.planefight.Parameter.voice){
 									//			com.example.planefight.Parameter.mediaplayer.start();
 									//		}
+												String totelScore=Integer.toString(parameter.Score);
+												tvScore.setText(totelScore);
 										}
-										//gp.postInvalidate();
+									//drawView.postInvalidate();
 									}
 								}
 							}
@@ -113,6 +118,8 @@ public class FightForEnemy extends Thread {
 									//		if(com.example.planefight.Parameter.voice){
 									//			com.example.planefight.Parameter.mediaplayer.start();
 									//		}
+												String totelScore=Integer.toString(parameter.Score);
+												tvScore.setText(totelScore);
 										}
 										
 									}
