@@ -1,3 +1,6 @@
+/*
+ * 敌机生成类：生成敌机和敌机所发射的子弹
+ * */
 package com.whaix.planegamedemo;
 
 import java.util.ArrayList;
@@ -17,7 +20,7 @@ public class ProductEnemyPlane extends Thread {
 			try{
 				Thread.sleep(parameter.fighterProductTime);
 				float x=(float)(Math.random()*parameter.screenWidth);		//随机产生敌机位置,都是从底边出来，所以Y都是0，只需要随机产生x值就可以
-				float y=(float)(Math.random()*parameter.screenHeight);
+				float y=(float)(Math.random()*parameter.screenHeight);		//添加Y是为了让敌机发射子弹
 				int rand=(int)(Math.random()*100);		//随机产生敌机型号
 				Plane plane;
 				Bullet bullet;

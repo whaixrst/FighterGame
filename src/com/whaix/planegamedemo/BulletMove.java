@@ -1,5 +1,6 @@
 /*
  * 这个类专用于产生子弹密度，总共可以创建60个子弹对象。
+ * 把BombMove类合并进来，少开一条线程
  */
 package com.whaix.planegamedemo;
 
@@ -7,17 +8,19 @@ import java.util.ArrayList;
 
 public class BulletMove extends Thread {
 	ArrayList<Bullet> bullet=new ArrayList<Bullet>();
+	ArrayList<Bomb> bombt=new ArrayList<Bomb>();
 	DrawView drawView;
 
-	public BulletMove(DrawView drawView,ArrayList<Bullet> bullet){
+	public BulletMove(DrawView drawView,ArrayList<Bullet> bullet,ArrayList<Bomb> bombt){
 		this.bullet = bullet;
-		this.drawView=drawView;		
+		this.drawView=drawView;	
+		this.bombt=bombt;
 	}	
 	public void run(){
 		super.run();
 		while (true) {
 			try {
-				Thread.sleep(100);		//每100ms发射一颗
+				Thread.sleep(120);		//每100ms发射一颗
 				for (int i = 0; i < bullet.size(); ++i) {
 					if (null != bullet.get(i)) {
 						/**限制了产生子弹的总数为60颗**/
@@ -37,10 +40,18 @@ public class BulletMove extends Thread {
 							}
 						}*/
 					}
-				//drawView.postInvalidate();
-					
+				//drawView.postInvalidate();					
 				}
-
+				for (int i = 0; i < bombt.size(); i++) {		//爆炸效果移动,就是一张图，从小变到大
+					if (null != bombt.get(i)) {
+						bombt.get(i).setBombDis(bombt.get(i).getBombDis() + 1);
+						if (bombt.get(i).getBombDis() > 30) {
+							bombt.remove(i);
+						}
+						bombt.get(i).setY(bombt.get(i).getY()+5);
+					}
+					drawView.postInvalidate();
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

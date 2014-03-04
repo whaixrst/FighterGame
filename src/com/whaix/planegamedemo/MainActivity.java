@@ -25,8 +25,6 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);			
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-	//	setContentView(R.layout.activity_main);
-	//	root=(FrameLayout)findViewById(R.id.root);
 		
 		FrameLayout paramLayout=new FrameLayout(this);
 		FrameLayout.LayoutParams param=new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -36,8 +34,8 @@ public class MainActivity extends Activity {
 		getWindowManager().getDefaultDisplay().getMetrics(metric);
 		parameter.Width=metric.widthPixels;		//屏幕高宽（像素）
 		parameter.Height=metric.heightPixels;
-		Float w =new Float(parameter.Width);
-		Float h=new Float(parameter.Height);
+		Float w =Float.valueOf(parameter.Width);
+		Float h =Float.valueOf(parameter.Height);
 		width=w.intValue();
 		height=h.intValue();
 		
@@ -54,9 +52,11 @@ public class MainActivity extends Activity {
 		tvScore.setGravity(Gravity.LEFT);
 		TextPaint tvScoreStrong = tvScore.getPaint(); 		//加粗
 		tvScoreStrong.setFakeBoldText(true); 
-	//	tvScore.setPadding(30, 10, width-80, height-20);
-	//	plane = new Plane(parameter.screenWidth / 2 - 25, parameter.screenHeight - 85, 1,1);
-		/**为了动态改变tvScore，要在改变分数的时候就改变tvScore，所以先传到DrawView,再传到FightForEnemy,我真是个天才**/
+
+		/*
+		 * 为了动态改变tvScore，要在改变分数的时候就改变tvScore，
+		 * 所以先传到DrawView,再传到FightForEnemy,我真是个天才
+		 */
 		drawView = new DrawView(this,tvScore);
 		
 		drawView.setMinimumHeight(height);
@@ -65,21 +65,7 @@ public class MainActivity extends Activity {
 		paramLayout.addView(tvName, viewParam);
 		paramLayout.addView(tvScore,scoreParam);
 		super.setContentView(paramLayout,param);
-	//	root.addView(drawView);
-	//	root.addView(tvName);
-	//	tvScore=(TextView)findViewById(R.id.showScore);
-		/**随机背景**/
-	/*	int rand = (int) (Math.random() * 10);
-		if(rand<6){		
-			drawView.setBackgroundResource(R.drawable.rank_backgroud);
-			
-		}else if(rand>=6){
-			drawView.setBackgroundResource(R.drawable.backgroud);			
-		}
-*/
-	//	setContentView(drawView);
-		
-		
+	
 	}
 	
 	@Override

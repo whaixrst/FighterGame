@@ -1,3 +1,7 @@
+/*
+ * 这个类暂时没用上，计划把我机移动和敌机移动都合并进来
+ */
+
 package com.whaix.planegamedemo;
 
 import android.content.Context;
@@ -29,9 +33,9 @@ public class PlaneMove extends Thread {
 	public void run(){
 		super.run();
 		while (true) {
-			if (plane.PlaneFlag == 1) {
+			if (plane.getPlaneFlag() == 1) {
 
-			} else if (plane.PlaneFlag == 2) {
+			} else if (plane.getPlaneFlag() == 2) {
 
 			}
 		}

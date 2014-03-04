@@ -1,3 +1,6 @@
+/*
+ * 子弹类，包括我机和敌机
+ */
 package com.whaix.planegamedemo;
 
 public class Bullet {

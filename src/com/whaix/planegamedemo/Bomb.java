@@ -4,9 +4,9 @@
 package com.whaix.planegamedemo;
 
 public class Bomb {
-	float x;
-	float y;
-	float bombDis;
+	private float x;
+	private float y;
+	private float bombDis;
 	
 	public Bomb(float x,float y,float bombDis){
 		this.x=x;
