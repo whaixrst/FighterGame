@@ -5,5 +5,14 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="showName">分数： </string>
-
+	<string name="btn_start">开始游戏 </string>
+	<string name="btn_option">设置游戏 </string>
+	<string name="btn_rank">查看排名 </string>
+	<string name="btn_about">关于游戏 </string>
+	<string name="btn_quit">退出游戏 </string>
+	<string name="about">本游戏由打不赢jiu跑开发，若有意见请反馈：whaixhcx@hotmail.com </string>
+	<string name="btn_aboutback">返回</string>
+	<string name="show_voice">关闭声音</string>
+	<string name="off_voice">关闭声音</string>
+	<string name="on_voice">开启声音</string>
 </resources>

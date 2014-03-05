@@ -6,5 +6,5 @@ public final class parameter {
 	public static  float screenHeight=854;
 	public static float Width=0;
 	public static float Height=0;
-	public static  int Score=0;
+	public static  long Score=0;
 }

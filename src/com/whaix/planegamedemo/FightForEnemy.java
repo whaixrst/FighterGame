@@ -63,15 +63,16 @@ public class FightForEnemy extends Thread {
 													    boomPlayer01.start();											
 														Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
 														bombt.add(b);
-														pt.remove(i);														
-														parameter.Score+=1;
+														pt.remove(i);	
+														bt.remove(j);		//V0.7.9.4 这里必须要加，不然最后死亡时，最后一发击中子弹不消失
+														parameter.Score+=100;
 													//if(com.example.planefight.Parameter.voice){	开启声音
 													//	com.example.planefight.Parameter.mediaplayer.start();
 													//}
-														String totelScore=Integer.toString(parameter.Score);
+														String totelScore=Long.toString(parameter.Score);
 														tvScore.setText(totelScore);
 													}
-													bt.remove(j);
+													bt.remove(j);		//为什么死亡的时候不执行这个语句，而是直接跳到synchronized (this)这里？
 											}
 									}
 								}
@@ -91,11 +92,12 @@ public class FightForEnemy extends Thread {
 													bombt.add(b);
 													boomPlayer02.start();
 													pt.remove(i);													
-													parameter.Score+=2;
+													parameter.Score+=200;
 										//		if(com.example.planefight.Parameter.voice){
 										//			com.example.planefight.Parameter.mediaplayer.start();
 										//		}
-													String totelScore=Integer.toString(parameter.Score);
+													bt.remove(j);
+													String totelScore=Long.toString(parameter.Score);
 													tvScore.setText(totelScore);
 												}
 												bt.remove(j);		//击中子弹消失
@@ -117,12 +119,13 @@ public class FightForEnemy extends Thread {
 													boomPlayer03.start();  
 													Bomb b = new Bomb(pt.get(i).getPlaneX(), pt.get(i).getPlaneY(), 10);
 													bombt.add(b);
-													pt.remove(i);													
-													parameter.Score+=5;
+													pt.remove(i);	
+													bt.remove(j);
+													parameter.Score+=500;
 										//		if(com.example.planefight.Parameter.voice){
 										//			com.example.planefight.Parameter.mediaplayer.start();
 										//		}
-													String totelScore=Integer.toString(parameter.Score);
+													String totelScore=Long.toString(parameter.Score);
 													tvScore.setText(totelScore);
 												}
 												bt.remove(j);		//击中子弹消失

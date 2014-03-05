@@ -1,6 +1,7 @@
 package com.whaix.planegamedemo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextPaint;
@@ -46,7 +47,7 @@ public class MainActivity extends Activity {
 		TextPaint tvNameStrong = tvName.getPaint(); 		//¼Ó´Ö
 		tvNameStrong.setFakeBoldText(true); 
 		
-		String totelScore=Integer.toString(parameter.Score);
+		String totelScore=Long.toString(parameter.Score);
 		tvScore.setText(totelScore);
 		tvScore.setTextColor(Color.WHITE);
 		tvScore.setGravity(Gravity.LEFT);
@@ -77,6 +78,15 @@ public class MainActivity extends Activity {
 		return super.onTouchEvent(event);
 	}
 	
+	protected void onActivityResult(int requestCode,int resultCode,Intent data){
+		if(resultCode==4){
+			MainActivity.this.finish();
+		} else if(resultCode==3){
+			MainActivity.this.finish();
+			Intent intent=new Intent(MainActivity.this,startMenuActivity.class);
+			MainActivity.this.startActivity(intent);
+		}
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

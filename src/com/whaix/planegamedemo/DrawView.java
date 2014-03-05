@@ -13,10 +13,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Message;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.AbsoluteLayout;
 import android.widget.TextView;
 
 public class DrawView extends View {
@@ -155,6 +152,7 @@ public class DrawView extends View {
 	 * onDraw回调函数
 	 * 不要再这里面创建对象，会影响速度的。 不然每次回调都会重新创建一个
 	 */
+	 
 	public void onDraw(Canvas canvas){
 		super.onDraw(canvas);	
 		Paint paint=new Paint();
