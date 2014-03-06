@@ -47,10 +47,10 @@ public class MainActivity extends Activity {
 		TextPaint tvNameStrong = tvName.getPaint(); 		//¼Ó´Ö
 		tvNameStrong.setFakeBoldText(true); 
 		
-		String totelScore=Long.toString(parameter.Score);
+		String totelScore=Integer.toString(parameter.Score);
 		tvScore.setText(totelScore);
 		tvScore.setTextColor(Color.WHITE);
-		tvScore.setGravity(Gravity.LEFT);
+	//	tvScore.setGravity(Gravity.LEFT);
 		TextPaint tvScoreStrong = tvScore.getPaint(); 		//¼Ó´Ö
 		tvScoreStrong.setFakeBoldText(true); 
 

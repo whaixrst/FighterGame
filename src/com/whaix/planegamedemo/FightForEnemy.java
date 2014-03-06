@@ -65,11 +65,11 @@ public class FightForEnemy extends Thread {
 														bombt.add(b);
 														pt.remove(i);	
 														bt.remove(j);		//V0.7.9.4 这里必须要加，不然最后死亡时，最后一发击中子弹不消失
-														parameter.Score+=100;
+														parameter.Score+=1000;
 													//if(com.example.planefight.Parameter.voice){	开启声音
 													//	com.example.planefight.Parameter.mediaplayer.start();
 													//}
-														String totelScore=Long.toString(parameter.Score);
+														String totelScore=Integer.toString(parameter.Score);
 														tvScore.setText(totelScore);
 													}
 													bt.remove(j);		//为什么死亡的时候不执行这个语句，而是直接跳到synchronized (this)这里？
@@ -92,12 +92,12 @@ public class FightForEnemy extends Thread {
 													bombt.add(b);
 													boomPlayer02.start();
 													pt.remove(i);													
-													parameter.Score+=200;
+													parameter.Score+=2000;
 										//		if(com.example.planefight.Parameter.voice){
 										//			com.example.planefight.Parameter.mediaplayer.start();
 										//		}
 													bt.remove(j);
-													String totelScore=Long.toString(parameter.Score);
+													String totelScore=Integer.toString(parameter.Score);
 													tvScore.setText(totelScore);
 												}
 												bt.remove(j);		//击中子弹消失
@@ -121,11 +121,11 @@ public class FightForEnemy extends Thread {
 													bombt.add(b);
 													pt.remove(i);	
 													bt.remove(j);
-													parameter.Score+=500;
+													parameter.Score+=5000;
 										//		if(com.example.planefight.Parameter.voice){
 										//			com.example.planefight.Parameter.mediaplayer.start();
 										//		}
-													String totelScore=Long.toString(parameter.Score);
+													String totelScore=Integer.toString(parameter.Score);
 													tvScore.setText(totelScore);
 												}
 												bt.remove(j);		//击中子弹消失
